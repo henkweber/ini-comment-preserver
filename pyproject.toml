@@ -1,6 +1,6 @@
 [project]
 name = "ini-comment-preserver"
-version = "0.1.0"
+version = "0.1.1"
 description = "Reads and writes INI files while preserving comments, key ordering, and inline whitespace lost by configparser."
 requires-python = ">=3.10"
 dependencies = []
