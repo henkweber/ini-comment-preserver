@@ -27,3 +27,10 @@ The trade-off: we parse less than a full INI grammar. No inline comments (`k = v
 - Leading indentation on key/value and comment lines is discarded. `  host = x` and `host = x` parse identically and both emit as `host=x`.
 - A key/value line appearing before any `[section]` raises `ParseError` rather than being silently assigned to a synthetic default section.
 - `read_string` replaces all existing state; calling it twice does not merge.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
